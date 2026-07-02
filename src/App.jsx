@@ -12,8 +12,11 @@ import {
 } from 'lucide-react';
 import CircularGallery from './components/react-bits/CircularGallery.jsx';
 
-const telegramUrl = 'https://t.me/A_Lustov';
-const instagramUrl = 'https://www.instagram.com/a_lustov/';
+const botUsername = import.meta.env.VITE_TELEGRAM_BOT_USERNAME || 'barber_concierge_bot';
+const botLink = (payload) => `https://t.me/${botUsername}?start=${payload}`;
+const telegramUrl = botLink('booking_site_hero');
+const portfolioBotUrl = botLink('portfolio_site');
+const quizBotUrl = botLink('style_quiz_site');
 const asset = (name) => `/assets/a-lustov/${name}`;
 
 const navItems = [
@@ -258,20 +261,26 @@ export default function App() {
 
         <section className="booking-section" id="booking">
           <div>
-            <p>Запись</p>
-            <h2>Напишите в Telegram и пришлите пару референсов</h2>
+            <p>Telegram-консьерж</p>
+            <h2>Бот покажет работы, подберёт форму и соберёт заявку</h2>
             <span>
-              В ответ можно согласовать время, задачу по стрижке или бороде и желаемый формат результата.
+              Не нужно сразу формулировать задачу мастеру. Бот проведёт по портфолио,
+              задаст несколько вопросов и соберёт короткую заявку с референсами.
             </span>
+            <div className="bot-flow">
+              <span><Camera /> Портфолио внутри Telegram</span>
+              <span><Sparkles /> Подбор стрижки за минуту</span>
+              <span><MessageCircle /> Заявка с контактом и временем</span>
+            </div>
           </div>
           <div className="booking-actions">
-            <CtaButton href={telegramUrl}>
-              <MessageCircle />
-              @A_Lustov
+            <CtaButton href={quizBotUrl}>
+              <Sparkles />
+              Подобрать стрижку
             </CtaButton>
-            <CtaButton href={instagramUrl} variant="secondary">
+            <CtaButton href={portfolioBotUrl} variant="secondary">
               <Camera />
-              Instagram
+              Портфолио в боте
             </CtaButton>
           </div>
         </section>
@@ -282,7 +291,7 @@ export default function App() {
         <nav>
           <a href="#works">Работы</a>
           <a href="#approach">Подход</a>
-          <a href={telegramUrl} target="_blank" rel="noreferrer">Telegram</a>
+          <a href={telegramUrl} target="_blank" rel="noreferrer">Telegram-бот</a>
         </nav>
       </footer>
     </div>

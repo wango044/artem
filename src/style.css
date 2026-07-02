@@ -608,6 +608,32 @@ svg {
   min-width: min(100%, 420px);
 }
 
+.bot-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.bot-flow span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(243, 244, 236, 0.14);
+  border-radius: var(--radius);
+  background: rgba(243, 244, 236, 0.055);
+  color: rgba(243, 244, 236, 0.74);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.bot-flow svg {
+  flex: 0 0 auto;
+  color: var(--sage);
+}
+
 .footer {
   display: flex;
   align-items: center;
