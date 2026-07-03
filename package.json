@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "bot": "node bot/index.js",
-    "bot:dry-run": "node bot/index.js --dry-run"
+    "bot:dry-run": "node bot/index.js --dry-run",
+    "bot:set-webhook": "node bot/set-webhook.js"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.1",
