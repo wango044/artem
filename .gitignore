@@ -26,3 +26,5 @@ plugins/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
