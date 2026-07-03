@@ -333,11 +333,11 @@ async function replyBookingFallback(ctx, summary) {
 
   await ctx.reply(
     [
-      'Заявка собрана. Чтобы бот сам отправлял её мастеру, добавь ADMIN_CHAT_ID в переменные Vercel.',
+      'Заявка собрана.',
       '',
       summary,
       '',
-      'Пока можно нажать кнопку ниже и отправить эти данные Артёму в личку.',
+      'Чтобы Артём точно увидел её сейчас, нажми кнопку ниже и отправь эти данные ему в личку.',
     ].join('\n'),
     Markup.inlineKeyboard([
       [Markup.button.url('Написать Артёму', directTelegramUrl)],
@@ -420,7 +420,13 @@ export function createBot() {
   bot.command('portfolio', (ctx) => showPortfolioMenu(ctx));
   bot.command('quiz', (ctx) => sendQuizStep(ctx));
   bot.command('book', (ctx) => startBooking(ctx));
-  bot.command('id', (ctx) => ctx.reply(`Chat ID: ${ctx.chat.id}`));
+  bot.command('id', (ctx) => ctx.reply(
+    [
+      `Chat ID: ${ctx.chat.id}`,
+      '',
+      'Чтобы заявки приходили сюда автоматически, добавь это значение в Vercel как ADMIN_CHAT_ID и сделай redeploy проекта.',
+    ].join('\n'),
+  ));
 
   bot.action('home', async (ctx) => {
     await safeAnswer(ctx);
